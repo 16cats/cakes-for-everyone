@@ -1,0 +1,19 @@
+<div class="navbar mx-auto" th:fragment="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light static-top">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="navbar-brand" th:href="@{/cakelist}">Cake store</a>
+                    <a th:href="@{/cakelist}">Store</a>
+                    <a th:href="@{/about}">About</a>
+                    <a th:href="@{/shoppingcart}">Cart</a>
+
+                    <form th:action="@{/logout}" method="post" class="ml-auto">
+                        <input type="submit" value="Sign Out" class="btn" />
+                        <!-- Add ml-auto class here -->
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
