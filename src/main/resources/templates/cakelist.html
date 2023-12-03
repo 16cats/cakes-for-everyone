@@ -5,55 +5,56 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 
-    <style>
-        body {
-            background-color: #ffcccc;
-            color: #333; /* Text color */
-        }
+<style>
+    body {
+        background-color: #ffcccc;
+        color: #333; /* Text color */
+    }
 
-        .container {
-            background-color: #ffffff; /* White background */
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
-        }
+    .container {
+        background-color: #ffffff; /* White background */
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 50px; /* Increased margin-top value */
+    }
 
-        h1 {
-            color: #e60073; /* Pink header */
-        }
+    h1 {
+        color: #e60073; /* Pink header */
+    }
 
-        h6 {
-            color: #e60073; /* Pink text */
-        }
+    h6 {
+        color: #e60073; /* Pink text */
+    }
 
-        table {
-            background-color: #ffcccc; /* Light pink table background */
-        }
+    table {
+        background-color: #ffcccc; /* Light pink table background */
+    }
 
-        th,
-        td {
-            color: #e60073; /* Pink text in table */
-        }
+    th,
+    td {
+        color: #e60073; /* Pink text in table */
+    }
 
-        a {
-            color: #fff; /* White text for links */
-        }
+    a {
+        color: #fff; /* White text for links */
+    }
 
-        .btn-primary {
-            background-color: #e60073; /* Pink button */
-            border-color: #e60073; /* Pink button border */
-        }
+    .btn-primary {
+        background-color: #e60073; /* Pink button */
+        border-color: #e60073; /* Pink button border */
+    }
 
-        .btn-success {
-            background-color: #4CAF50; /* Green button */
-            border-color: #4CAF50; /* Green button border */
-        }
+    .btn-success {
+        background-color: #4CAF50; /* Green button */
+        border-color: #4CAF50; /* Green button border */
+    }
 
-        .btn-danger {
-            background-color: #ff3333; /* Red button */
-            border-color: #ff3333; /* Red button border */
-        }
-    </style>
+    .btn-danger {
+        background-color: #ff3333; /* Red button */
+        border-color: #ff3333; /* Red button border */
+    }
+</style>
+
 </head>
 
 <body>
@@ -74,23 +75,25 @@
                     <th>Category</th>
                     <th>Price</th>
                     <th>Description</th>
-                    <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr th:each="cake : ${cakes}">
-                    <td th:text="${cake.name}"></td>
-                    <td th:text="${cake.dietaryInformation}"></td>
-                    <td th:text="${cake.category.name}"></td>
-                    <td th:text="${cake.price}"></td>
-                    <td th:text="${cake.description}"></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary" th:href="@{/edit/{id}(id=${cake.id})}">Edit</a></td>
-                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${cake.id})}">Delete</a></td>
-                </tr>
-            </tbody>
+<tbody>
+    <tr th:each="cake : ${cakes}">
+        <td th:text="${cake.name}"></td>
+        <td th:text="${cake.dietaryInformation}"></td>
+        <td th:text="${cake.category.name}"></td>
+        <td th:text="${cake.price}"></td>
+        <td th:text="${cake.description}"></td>
+        <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-primary" th:href="@{/edit/{id}(id=${cake.id})}">Edit</a></td>
+        <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${cake.id})}">Delete</a></td>
+		<td><a class="btn btn-success" th:href="@{/addtocart/{id}(id=${cake.id})}">Add to cart</a></td>
+    </tr>
+</tbody>
+<tr>
+<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/add}" class="btn btn-success">Add cake</a></td>
+</tr>
         </table>
         
-        <a sec:authorize="hasRole('ROLE_ADMIN')" href="/add" class="btn btn-success">Add cake</a>
     </div>
 </body>
 

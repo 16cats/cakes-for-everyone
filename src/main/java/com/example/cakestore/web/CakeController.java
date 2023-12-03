@@ -18,6 +18,7 @@ import com.example.cakestore.domain.Cake;
 import com.example.cakestore.domain.CakeRepository;
 import com.example.cakestore.domain.CategoryRepository;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -57,6 +58,7 @@ public class CakeController {
 	}
 		
 		//for adding
+		@PreAuthorize("hasAuthority('ADMIN')")
 	    @RequestMapping(value = "/add")
 	    public String addCake(Model model){
 			model.addAttribute("cake", new Cake());
@@ -65,6 +67,7 @@ public class CakeController {
 	    }     
 	    
 	    //for saving
+		@PreAuthorize("hasAuthority('ADMIN')")
 	    @RequestMapping(value = "/save", method = RequestMethod.POST)
 	    public String save(Cake cake){
 	        repository.save(cake);
@@ -72,6 +75,7 @@ public class CakeController {
 	    }    
 	    
 	    //for editing
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@RequestMapping(value = "/edit/{id}")
 		public String edit(@PathVariable("id") Long cakeId, Model model){
 			model.addAttribute("cake", repository.findById(cakeId));
@@ -80,6 +84,7 @@ public class CakeController {
 		}
 	    
 	    //for deleting
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 		public String deleteBook(@PathVariable("id") Long cakeId, Model model) {
 			repository.deleteById(cakeId);

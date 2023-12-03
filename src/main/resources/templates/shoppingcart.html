@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Cake Store</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+ <style>
+    body {
+        background-color: #ffcccc;
+        color: #333; /* Text color */
+    }
+
+    .container {
+        background-color: #ffffff; /* White background */
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 50px; /* Increased margin-top value */
+    }
+
+    h1 {
+        color: #e60073; /* Pink header */
+    }
+
+    h6 {
+        color: #e60073; /* Pink text */
+    }
+
+    table {
+        background-color: #ffcccc; /* Light pink table background */
+    }
+
+    th,
+    td {
+        color: #e60073; /* Pink text in table */
+    }
+
+    a {
+        color: #fff; /* White text for links */
+    }
+
+    .btn-primary {
+        background-color: #e60073; /* Pink button */
+        border-color: #e60073; /* Pink button border */
+    }
+
+    .btn-success {
+        background-color: #4CAF50; /* Green button */
+        border-color: #4CAF50; /* Green button border */
+    }
+
+    .btn-danger {
+        background-color: #ff3333; /* Red button */
+        border-color: #ff3333; /* Red button border */
+    }
+</style>
+
+<body>
+	<div th:insert="fragments/navbar :: navbar"></div>
+	<h1>Shopping Cart</h1>
+	<table class="table">
+		<thead>
+		<tr>
+
+			<th scope="col">Name</th>
+			<th scope="col">Dietary Information</th>
+			<th scope="col">Category</th>
+			<th scope="col">Price</th>
+			<th scope="col">Description</th>
+		</tr>
+		</thead>
+		<tbody>
+        <tr th:each="cake : ${cart}">
+            <td th:text="${cake.name}"></td>
+            <td th:text="${cake.dietaryInformation}"></td>
+            <td th:text="${cake.category.name}"></td>
+            <td th:text="${cake.price}"></td>
+            <td th:text="${cake.description}"></td>
+			<td><a th:href="@{/deletefromcart/{id}(id=${cake.id})}" class="text-danger">Delete</a></td>
+        </tr>
+		</tbody>
+	</table>
+	<a>Checkout</a>
+</body>
+</html>

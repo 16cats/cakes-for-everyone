@@ -14,6 +14,7 @@ import com.example.cakestore.web.UserDetailServiceImpl;
 
 @Configuration
 @EnableWebSecurity
+// (securedEnabled = true)
 public class WebSecurityConfig  {
 	@Autowired
 	private UserDetailServiceImpl userDetailsService;

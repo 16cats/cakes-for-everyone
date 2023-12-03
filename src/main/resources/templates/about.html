@@ -3,52 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    
     <title>About Us - Cake Store</title>
-    <style>
+     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            background-color: #ffcccc;
+            color: #333; /* Text color */
+        }
+
+        .container {
+            background-color: #ffffff; /* White background */
             padding: 20px;
-            background-color: #f8f8f8;
+            border-radius: 10px;
+            margin-top: 30px;
         }
 
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #e6b800;
-            color: #fff;
+        h1 {
+            color: #e60073; /* Pink header */
         }
 
-        section {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: justify;
+        h6 {
+            color: #e60073; /* Pink text */
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
+        table {
+            background-color: #ffcccc; /* Light pink table background */
+        }
+
+        th,
+        td {
+            color: #e60073; /* Pink text in table */
+        }
+
+        a {
+            color: #fff; /* White text for links */
+        }
+
+        .btn-primary {
+            background-color: #e60073; /* Pink button */
+            border-color: #e60073; /* Pink button border */
+        }
+
+        .btn-success {
+            background-color: #4CAF50; /* Green button */
+            border-color: #4CAF50; /* Green button border */
+        }
+
+        .btn-danger {
+            background-color: #ff3333; /* Red button */
+            border-color: #ff3333; /* Red button border */
         }
     </style>
 </head>
 <body>
+	<div th:insert="fragments/navbar :: navbar"></div>
 
     <header>
-        <h1>Your Cake Store</h1>
+        <h1>Cake Store</h1>
         <p>Delicious Cakes for Every Occasion</p>
     </header>
 
     <section>
         <h2>About Us</h2>
-        <p>Welcome to Your Cake Store, where we create delightful and scrumptious cakes for all your special moments. Our passion is baking, and we take pride in crafting unique and mouthwatering treats that not only look amazing but also taste incredible.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Maxime veritatis recusandae sequi, quidem dolorum debitis cum temporibus? Nisi ea iusto placeat nemo quae. Consequuntur quisquam, ex doloremque nam doloribus alias.</p>
+        
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Maxime veritatis recusandae sequi, quidem dolorum debitis cum temporibus? Nisi ea iusto placeat nemo quae. Consequuntur quisquam, ex doloremque nam doloribus alias.</p>
 
-        <p>At Your Cake Store, we use only the finest ingredients to ensure the highest quality in every bite. Our skilled bakers bring creativity and dedication to each cake they create, making them a work of art for your celebrations.</p>
-
-        <p>Whether you're celebrating a birthday, wedding, anniversary, or any other special event, we have a wide range of cakes to suit every taste and occasion. From classic flavors to custom designs, we're here to make your moments even more memorable.</p>
-
-        <p>Thank you for choosing Your Cake Store. We look forward to being a part of your joyous celebrations and creating delicious memories that last a lifetime.</p>
-
-        <img src="cake-image.jpg" alt="Delicious Cake">
     </section>
 
 </body>
